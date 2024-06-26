@@ -1,0 +1,31 @@
+body {
+    transition: background-color 0.5s, color 0.5s;
+  }
+  
+  .dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+  }
+  
+  .dark-mode #clock {
+    color: #FFFFFF;
+  }
+  
+  .btn-outline-primary.btnradio2 {
+    color: #FF00DD;
+    border-color: #FF00DD;
+  }
+  
+  .btn-outline-primary.btnradio2:hover,
+  .btn-outline-primary.btnradio2:focus,
+  .btn-outline-primary.btnradio2:active,
+  .btn-outline-primary.btnradio2.active {
+    background-color: #FF00DD;
+    border-color: #FF00DD;
+  }
+  
+  .btn-outline-primary.btnradio2:checked {
+    background-color: #FF00DD;
+    border-color: #FF00DD;
+  }
+  

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>신규 등록 상품</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+        body {
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        .dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        .dark-mode #clock {
+            color: #ffffff !important;
+        }
+
+        .btn-outline-primary.btnradio2 {
+            color: #FF00DD;
+            border-color: #FF00DD;
+        }
+
+        .btn-outline-primary.btnradio2:hover,
+        .btn-outline-primary.btnradio2:focus,
+        .btn-outline-primary.btnradio2:active,
+        .btn-outline-primary.btnradio2.active,
+        .btn-check:checked + .btnradio2 {
+            background-color: #FF00DD;
+            border-color: #FF00DD;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+  <div class="container mt-3">
+    <h3 class="mt-5 mb-3">신규 등록 상품</h3>
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onchange="toggleDarkMode()">
+      <label class="form-check-label" for="flexSwitchCheckDefault">다크모드</label>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-lg-auto mb-3 mb-lg-0">
+        <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
+        <select class="form-select" aria-label="Default select example">
+          <option selected>카테고리</option>
+          <option value="shirts">상의</option>
+          <option value="pants">하의</option>
+          <option value="shoes">신발</option>
+          <option value="fashion">패션잡화</option>
+        </select>
+      </div>
+      <!-- 카테고리 코드 -->
+
+      <div class="col-lg-auto mb-3 mb-lg-0">
+        <input class="form-control" type="text" placeholder="제품명을 입력해주세요">
+      </div>
+      <!-- 제품명 입력 버튼 -->
+  
+      <div class="col-lg-auto mb-3 mb-lg-0">
+        <button type="button" class="btn btn-primary">조회</button>
+      </div>
+      <!-- 조회 버튼 코드 -->
+  
+      <div class="col-lg-auto">
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+          <label class="btn btn-outline-primary" for="btnradio1">남자</label>
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+          <label class="btn btn-outline-primary btnradio2" for="btnradio2">여자</label>
+        </div>
+      </div>
+      <!-- 성별 선택 라디오 버튼 -->
+  
+      <div class="col-lg-auto">
+        <h2 id="clock" style="color:black;">clock</h2>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    var Target = document.getElementById("clock");
+    function clock() {
+      var time = new Date();
+  
+      var month = time.getMonth();
+      var date = time.getDate();
+      var day = time.getDay();
+      var week = ['일', '월', '화', '수', '목', '금', '토'];
+  
+      var hours = time.getHours();
+      var minutes = time.getMinutes();
+  
+      Target.innerText =
+        `${month + 1}월 ${date}일 ${week[day]}요일 ` +
+        `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}`;
+  
+    }
+    clock();
+    setInterval(clock, 1000);
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
+        <!-- 실시간 시계 코드 -->
+
+          <div class="container mt-3">
+        <table class="table table-sm">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">카테고리</th>
+                    <th scope="col">브랜드</th>
+                    <th scope="col">상품명</th>
+                    <th scope="col">가격</th>
+                  </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                  <tr>
+                    <th scope="row">상의</th>
+                    <td>Supreme</td>
+                    <td>슈프림 박스로고 후드티</td>
+                    <td>390,000</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">하의</th>
+                    <td>DIESEL</td>
+                    <td>디젤 트랙 팬츠</td>
+                    <td>188,000</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">신발</th>
+                    <td>Nike</td>
+                    <td>에어포스1</td>
+                    <td>137,000</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">패션잡화</th>
+                    <td>Music&Goods</td>
+                    <td>빵빵이 키링</td>
+                    <td>29,000</td>
+                  </tr>
+                </tbody>
+              </table>
+            <!--열의 속성값-->
+            <tbody id="data-table">
+                <!-- 추후 크롤링한 데이터가 들어가는 자리 -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+          <nav aria-label="...">
+            <ul class="pagination">
+              <li class="page-item disabled">
+                <a class="page-link">Previous</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item active" aria-current="page">
+                <a class="page-link" href="#">2</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <!--페이지네이션 코드-->
+
+        <div class="col-md-6 text-center">
+          <a class="btn btn-primary" href="회원가입.html" role="button">회원가입</a>
+        </div>
+      </div>
+    </div>
+    <!--회원가입 버튼 코드-->
+<script>
+      // 크롤링한 데이터를 아래와 같은 형태의 객체 배열로 가정합니다.
+      // 추후 데이터베이스에 있는 데이터를 쿼리문으로 불러 올 수 있게 쿼리르 작성해 볼 수 있음
+      const data = [
+          { category: "상의", brand: 'Supreme', product: '슈프림 박스로고 후드티', price: '390,000' },
+          { category: "하의", brand: 'DIESEL', product: '디젤 트랙 팬츠', price: '188,000' },
+          { category: "신발", brand: 'Nike', product: '에어포스 1', price: '137,000' },
+          { category: "패션잡화", brand: 'Music&Goods', product: '빵빵이 키링', price: '29,000' },
+          // ...
+      ];
+      
+      const dataTable = document.getElementById('data-table');
+      
+      data.forEach((item) => {
+          const row = dataTable.insertRow();
+          row.insertCell(0).innerHTML = item.category;
+          row.insertCell(1).innerHTML = item.brand;
+          row.insertCell(2).innerHTML = item.product;
+          row.insertCell(3).innerHTML = item.price;
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>
